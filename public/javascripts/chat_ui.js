@@ -1,9 +1,8 @@
 var socket = io.connect();
 var chat = new Chat(socket);
 
-var appendMessage = function(message) {
-
-  var div = $('<div>').text(message);
+var appendMessage = function(data) {
+  var div = $('<div>').text(data.username + ": " + data.message);
   $('.chatbox').append(div);
 }
 
