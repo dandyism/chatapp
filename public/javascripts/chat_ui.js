@@ -22,14 +22,12 @@ var appendNotification = function (data) {
 }
 
 var userList = function(usernames) {
-  $('.users').empty();
-  
-  _.each(usernames, function(username){
-    var rendered = userTemplate({
-      username: username
-    });
-    $('.users').append(rendered);
+  var rendered = userTemplate({
+    room: chat.room,
+    usernames: usernames
   });
+  
+  $('.users').html(rendered);
 };
 
 $(document).ready(function(){

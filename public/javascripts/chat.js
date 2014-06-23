@@ -1,5 +1,6 @@
 var Chat = function (socket) {
   this.socket = socket;
+  this.room = "lobby";
 };
 
 Chat.prototype.sendMessage = function (message) {
@@ -11,5 +12,6 @@ Chat.prototype.processCommand = function (command, args) {
     this.socket.emit('nicknameChangeRequest', args);
   } else if(command === '/join') {
     this.socket.emit('roomJoin', args)
+    this.room = args;
   }
 };

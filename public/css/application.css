@@ -1,4 +1,4 @@
-ul, li, span, form, input, div, h1 {
+ul, li, span, form, input, div, h1, h2 {
   margin: 0;
   padding: 0;
   border: 0;
@@ -25,3 +25,47 @@ input[type="submit"] {
   color: inherit;
   cursor: pointer;
 }
+
+body {
+  font-family: sans-serif;
+}
+
+.chatinput input {
+  display: block;
+  border: 1px solid black;
+  outline: 0;
+  margin-top: 20px;
+  width: 100%;
+  
+  
+}
+
+h1 {
+  text-align: center;
+  font-size: 40px;
+}
+
+.wrapper {
+  position: relative;
+  margin: 0 auto;
+  width: 500px;
+
+
+}
+
+.users {
+  width: 100px;
+  float: left;
+  
+}
+
+.chatbox {
+  width: 400px;
+  float: left;
+  background: #eee;
+  height: 500px;
+  overflow: scroll;
+}
+
+
+
