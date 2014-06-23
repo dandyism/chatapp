@@ -15,6 +15,9 @@
   <div class="chatbox">
     
   </div>
+  <div class="users">
+    
+  </div>
   <form class="chatinput">
     <input type="text">
     <button>Submit</button>
@@ -28,6 +31,12 @@
   <script type="text/template" id="chat-notification-template">
     <div class="notification">
       <%= _.escape(message) %>
+    </div>
+  </script>
+  
+  <script type="text/template" id="user-template">
+    <div class="user">
+      <%= _.escape(username) %>
     </div>
   </script>
 </body>

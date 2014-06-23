@@ -2,6 +2,8 @@ var socket = io.connect();
 var chat = new Chat(socket);
 
 var messageTemplate;
+var notificationTemplate;
+var userTemplate;
 
 var appendMessage = function(data) {
   var rendered = messageTemplate({
@@ -19,6 +21,16 @@ var appendNotification = function (data) {
   $('.chatbox').append(rendered);
 }
 
+var userList = function(usernames) {
+  $('.users').empty();
+  
+  _.each(usernames, function(username){
+    var rendered = userTemplate({
+      username: username
+    });
+    $('.users').append(rendered);
+  });
+};
 
 $(document).ready(function(){
   socket.on('serverMessage', function(data){
@@ -29,6 +41,11 @@ $(document).ready(function(){
     if (!data.success) {
       appendNotification(data.message);
     }
+  });
+  
+  socket.on('user-list', function(usernames) {
+    console.log(usernames);
+    userList(usernames);
   });
   
   socket.on('notification', function(data) {
@@ -52,6 +69,7 @@ $(document).ready(function(){
   
   messageTemplate = _.template($('#chat-message-template').html());
   notificationTemplate = _.template($('#chat-notification-template').html());
+  userTemplate = _.template($('#user-template').html());
 });
 
 
