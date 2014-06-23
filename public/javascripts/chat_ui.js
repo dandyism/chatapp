@@ -16,7 +16,7 @@ $(document).ready(function(){
     event.preventDefault();
     
     var message = $(this).find('input').val();
-    
+    $(this).find('input').val("");
     chat.sendMessage(message);
   });
 })
