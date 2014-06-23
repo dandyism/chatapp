@@ -4,6 +4,8 @@
   <meta charset="UTF-8">
   <title>Chat App</title>
   
+  <link rel="stylesheet" type="text/css" href="/css/application.css">
+  
   <script src="/javascripts/underscore-min.js"></script>
   <script src="/javascripts/jquery-2.1.1.min.js"></script>
   <script src="/socket.io/socket.io.js"></script>
@@ -12,32 +14,32 @@
 </head>
 <body>
   <h1>Chat App</h1>
-  <div class="chatbox">
+  <div class="wrapper">
+    <ul class="chatbox"></ul>
     
-  </div>
-  <div class="users">
+    <ul class="users"></ul>
     
+    <form class="chatinput">
+      <input type="text">
+      <button>Submit</button>
+    </form>
   </div>
-  <form class="chatinput">
-    <input type="text">
-    <button>Submit</button>
-  </form>
   
   <script type="text/template" id="chat-message-template">
-    <div>
+    <li>
       <span class="username"><%= _.escape(username) %></span>: <%= _.escape(message) %>
-    </div>
+    </li>
   </script>
   <script type="text/template" id="chat-notification-template">
-    <div class="notification">
+    <li class="notification">
       <%= _.escape(message) %>
-    </div>
+    </li>
   </script>
   
   <script type="text/template" id="user-template">
-    <div class="user">
+    <li class="user">
       <%= _.escape(username) %>
-    </div>
+    </li>
   </script>
 </body>
 </html>
