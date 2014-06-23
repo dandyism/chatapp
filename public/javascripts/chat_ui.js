@@ -15,7 +15,14 @@ $(document).ready(function(){
   socket.on('serverMessage', function(data){
     appendMessage(data);
   });
-
+  
+  socket.on('nicknameChangeResult', function(data) {
+    appendMessage({
+      username: "system",
+      message: data.message
+    });
+  });
+  
   $('body').on('submit', 'form.chatinput', function(event) {
     event.preventDefault();
     
