@@ -13,7 +13,7 @@ $(document).ready(function(){
   $('body').on('submit', 'form.chatinput', function(event) {
     event.preventDefault();
     
-    var message = $(this).find('input[name="message"]').val();
+    var message = $(this).find('input').val();
     
     chat.sendMessage(message);
   });
