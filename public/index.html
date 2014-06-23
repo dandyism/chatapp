@@ -4,6 +4,7 @@
   <meta charset="UTF-8">
   <title>Chat App</title>
   
+  <script src="/javascripts/underscore-min.js"></script>
   <script src="/javascripts/jquery-2.1.1.min.js"></script>
   <script src="/socket.io/socket.io.js"></script>
   <script src="/javascripts/chat.js"></script>
@@ -18,5 +19,11 @@
     <input type="text">
     <button>Submit</button>
   </form>
+  
+  <script type="text/template" id="chat-message-template">
+    <div>
+      <span class="username"><%= _.escape(username) %></span>: <%= _.escape(message) %>
+    </div>
+  </script>
 </body>
 </html>

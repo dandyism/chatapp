@@ -1,9 +1,14 @@
 var socket = io.connect();
 var chat = new Chat(socket);
 
+var messageTemplate;
+
 var appendMessage = function(data) {
-  var div = $('<div>').text(data.username + ": " + data.message);
-  $('.chatbox').append(div);
+  var renderedMessage = messageTemplate({
+    username: data.username,
+    message: data.message
+  });
+  $('.chatbox').append(renderedMessage);
 }
 
 $(document).ready(function(){
@@ -18,6 +23,8 @@ $(document).ready(function(){
     $(this).find('input').val("");
     chat.sendMessage(message);
   });
+  
+  messageTemplate = _.template($('#chat-message-template').html());
 })
 
 
