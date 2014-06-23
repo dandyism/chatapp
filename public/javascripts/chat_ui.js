@@ -42,7 +42,7 @@ $(document).ready(function(){
     $(this).find('input').val("");
     if (message[0] == '/') {
       var command = message.split(' ')[0];
-      var args = message.slice(command.length);
+      var args = message.slice(command.length + 1);
       chat.processCommand(command, args);
     } else {
       chat.sendMessage(message);
