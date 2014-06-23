@@ -4,12 +4,21 @@ var chat = new Chat(socket);
 var messageTemplate;
 
 var appendMessage = function(data) {
-  var renderedMessage = messageTemplate({
+  var rendered = messageTemplate({
     username: data.username,
     message: data.message
   });
-  $('.chatbox').append(renderedMessage);
+  $('.chatbox').append(rendered);
 }
+
+var appendNotification = function (data) {
+  var rendered = notificationTemplate({
+    message: data
+  });
+  
+  $('.chatbox').append(rendered);
+}
+
 
 $(document).ready(function(){
   socket.on('serverMessage', function(data){
@@ -17,10 +26,13 @@ $(document).ready(function(){
   });
   
   socket.on('nicknameChangeResult', function(data) {
-    appendMessage({
-      username: "system",
-      message: data.message
-    });
+    if (!data.success) {
+      appendNotification(data.message);
+    }
+  });
+  
+  socket.on('notification', function(data) {
+    appendNotification(data);
   });
   
   $('body').on('submit', 'form.chatinput', function(event) {
@@ -39,7 +51,8 @@ $(document).ready(function(){
   });
   
   messageTemplate = _.template($('#chat-message-template').html());
-})
+  notificationTemplate = _.template($('#chat-notification-template').html());
+});
 
 
 
