@@ -21,7 +21,14 @@ $(document).ready(function(){
     
     var message = $(this).find('input').val();
     $(this).find('input').val("");
-    chat.sendMessage(message);
+    if (message[0] == '/') {
+      var command = message.split(' ')[0];
+      var args = message.slice(command.length);
+      chat.processCommand(command, args);
+    } else {
+      chat.sendMessage(message);
+    }
+    
   });
   
   messageTemplate = _.template($('#chat-message-template').html());
