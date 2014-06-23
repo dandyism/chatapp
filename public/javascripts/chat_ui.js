@@ -43,8 +43,7 @@ $(document).ready(function(){
     }
   });
   
-  socket.on('user-list', function(usernames) {
-    console.log(usernames);
+  socket.on('userList', function(usernames) {
     userList(usernames);
   });
   
@@ -71,6 +70,3 @@ $(document).ready(function(){
   notificationTemplate = _.template($('#chat-notification-template').html());
   userTemplate = _.template($('#user-template').html());
 });
-
-
-

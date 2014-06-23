@@ -9,5 +9,7 @@ Chat.prototype.sendMessage = function (message) {
 Chat.prototype.processCommand = function (command, args) {
   if(command === '/nick') {
     this.socket.emit('nicknameChangeRequest', args);
+  } else if(command === '/join') {
+    this.socket.emit('roomJoin', args)
   }
 };
