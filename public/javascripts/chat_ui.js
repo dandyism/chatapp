@@ -1,4 +1,5 @@
 var socket = io.connect();
+var rooms = new RoomManager;
 var chat = new Chat(socket);
 
 var messageTemplate;
